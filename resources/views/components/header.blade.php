@@ -49,5 +49,5 @@
     </div>
 
     <!-- GARIS BAWAH-->
-    <div class="mx-[6%] border-b-4 border-black-200"></div>
+    <div class="mx-[6%] border-b-4 border-[#202321]"></div>
 </header>

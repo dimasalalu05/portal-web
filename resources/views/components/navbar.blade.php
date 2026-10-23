@@ -12,5 +12,9 @@
         <x-nav-link href="#" :active="request()->routeIs('Liputan Khusus')">Liputan Khusus</x-nav-link>
     </div>
 
+    {{-- UNDERLINE --}}
     <div class="mx-[6%] border-b-2 border-gray-300 pt-3"></div>
+
+    {{-- SUB NAVBAR --}}
+    <x-sub-navbar />
 </nav>

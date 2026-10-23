@@ -17,7 +17,7 @@
     <x-header />
 
     {{-- Navbar --}}
-    {{-- <x-navbar /> --}}
+    <x-navbar />
 
     {{-- Main --}}
     <main class="grow max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">

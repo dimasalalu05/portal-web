@@ -1,5 +1,5 @@
 <header class="bg-white pt-4">
-    <div class="w-full px-[6%] pb-4 flex justify-between items-center">
+    <div class=" w-full px-[6%] pb-4 flex justify-between items-center">
         <!-- (Menu & Logo) -->
         <div class="flex items-center gap-4">
             <!-- Icon Burger Menu (Garis Tiga) -->

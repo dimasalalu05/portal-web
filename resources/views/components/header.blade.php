@@ -47,7 +47,7 @@
             </a>
         </div>
     </div>
-
-    <!-- GARIS BAWAH-->
-    <div class="mx-[6%] border-b-4 border-[#202321]"></div>
 </header>
+
+{{-- UNDERLINE --}}
+<x-underline margin_top="-mt-3" />

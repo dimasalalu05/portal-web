@@ -20,8 +20,12 @@
     <x-navbar />
 
     {{-- Main --}}
-    <main class="grow max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
-        {{ $slot ?? 'Layout Utama' }}
+    <main class="grow w-full px-[6%] mx-auto ">
+        @if (($slot ?? null) && !$slot->isEmpty())
+            {{ $slot }}
+        @else
+            <x-main-article-sorotan-hari-ini></x-main-article-sorotan-hari-ini>
+        @endif
     </main>
 
     {{-- Footer --}}

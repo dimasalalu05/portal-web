@@ -13,7 +13,7 @@
     </div>
 
     {{-- UNDERLINE --}}
-    <div class="mx-[6%] border-b-2 border-gray-300 pt-3"></div>
+    <x-underline color='border-[#6B706D]' weight='border-b-2' padding='pt-3' />
 
     {{-- SUB NAVBAR --}}
     <x-sub-navbar />

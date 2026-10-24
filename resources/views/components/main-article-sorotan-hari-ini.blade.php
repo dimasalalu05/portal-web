@@ -32,4 +32,6 @@
 
         <span> <a href="" class="text-[#6B706D] text-xs"> baca selengkapnya &raquo;</a></span>
     </div>
+
 </div>
+<x-underline margin='mt-[0%]' padding='pt-9' />

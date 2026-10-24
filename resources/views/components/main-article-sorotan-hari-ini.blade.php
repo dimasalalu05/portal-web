@@ -1,4 +1,4 @@
-<div class="space-y-4 mt-3">
+<article class="space-y-4 mt-3">
     <div class="flex justify-between">
         <span class="text-[#C52E2B] text-xs font-bold ">SOROTAN HARI INI</span>
         <span class="text-[#6B706D] text-xs">Jumat 12 Agustus 2006</span>
@@ -33,5 +33,5 @@
         <span> <a href="" class="text-[#6B706D] text-xs"> baca selengkapnya &raquo;</a></span>
     </div>
 
-</div>
+</article>
 <x-underline margin='mt-[0%]' padding='pt-9' />

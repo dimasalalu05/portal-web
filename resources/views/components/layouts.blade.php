@@ -24,7 +24,7 @@
         @if (($slot ?? null) && !$slot->isEmpty())
             {{ $slot }}
         @else
-            <x-main-article-sorotan-hari-ini></x-main-article-sorotan-hari-ini>
+            <x-article-pilihan-redaksi></x-article-pilihan-redaksi>
         @endif
     </main>
 

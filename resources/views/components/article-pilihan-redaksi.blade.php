@@ -13,7 +13,7 @@
     <div>
         <x-nav-link class="text-[#C52E2B]  text-sm" href='#' :active="request()->routeIs('Ekonomi')"><b>Ekonomi</b></x-nav-link>
 
-        <x-judul-berita>Dari atap pabrik, energi bersih mulai mengambil peran</x-judul-berita>
+        <x-judul-berita width='text-2xl' />
 
     </div>
 

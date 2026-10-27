@@ -3,12 +3,12 @@
     {{-- OVERLINE --}}
     <x-underline margin='mt-[0%]' padding='pt-5' />
 
-    <div class="flex justify-between">
+    <div class="flex justify-between pt-5">
         {{-- JUDUL HALAMAN --}}
         <h1 class="text-[#202321] text-[27px] font-bold">Pilihan Redaksi</h1>
 
         {{-- RUTE SEMUA PILIHAN REDAKSI --}}
-        <x-nav-link class="border-none" href='#' :active="request()->routeIs('pilihan redaksi')">
+        <x-nav-link class="border-none text-red-500" href='#' :active="request()->routeIs('pilihan redaksi')">
             Kurasi hari ini &raquo;
         </x-nav-link>
     </div>
@@ -39,4 +39,4 @@
 </article>
 
 {{-- UNDERLINE --}}
-{{-- <x-underline margin='mt-[0%]' padding='pt-9' /> --}}
+<x-underline margin='mt-[0%]' padding='pt-9' />

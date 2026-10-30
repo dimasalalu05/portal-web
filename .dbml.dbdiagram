@@ -1,12 +1,43 @@
 {
-  "version": "3.0.0",
-  "darkMode": false,
+  "version": "2.0.0",
+  "darkMode": true,
   "gridEnabling": false,
   "currentViewName": null,
   "defaultView": {
     "detailLevel": "All",
     "relationshipMode": "All",
-    "tablePositions": [],
+    "tablePositions": [
+      {
+        "name": "users",
+        "schemaName": "public",
+        "x": -6.292470190251208,
+        "y": -200.47349470218393
+      },
+      {
+        "name": "articles",
+        "schemaName": "public",
+        "x": -6.292470190251208,
+        "y": 233.52650529781607
+      },
+      {
+        "name": "channels",
+        "schemaName": "public",
+        "x": 387.99667632261253,
+        "y": 257.2371641502441
+      },
+      {
+        "name": "categories",
+        "schemaName": "public",
+        "x": -6.292470190251208,
+        "y": 781.5265052978161
+      },
+      {
+        "name": "article_sources",
+        "schemaName": "public",
+        "x": -6.292470190251208,
+        "y": 991.5265052978161
+      }
+    ],
     "tableGroupCollapseStates": [],
     "stickyNoteLayouts": [],
     "referencePaths": []

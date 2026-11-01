@@ -26,7 +26,7 @@ Table articles {
  thumbnail varchar(100) [null]
  image_source_url text [null]
  image_license varchar(100) [null]
- user_id int [not null]
+ author_id int [not null]
  category_id int [not null]
  created_at timestamp [default: 'now()']
  updated_at timestamp [default: 'now()']
@@ -56,7 +56,7 @@ Table articles {
  }
 
  // RELASI Article
- Ref: articles.user_id > users.id
+ Ref: articles.author_id > users.id
  Ref: articles.category_id > categories.id
  Ref: categories.channel_id > channels.id
  Ref:article_sources.article_id > articles.id

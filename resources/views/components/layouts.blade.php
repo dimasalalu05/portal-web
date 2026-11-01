@@ -20,11 +20,12 @@
     <x-navbar />
 
     {{-- Main --}}
-    <main class="grow w-full px-[6%] mx-auto ">
+    <main class="grow w-full px-[6%] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
         @if (($slot ?? null) && !$slot->isEmpty())
             {{ $slot }}
         @else
             <x-article-editorial-choise></x-article-editorial-choise>
+            {{-- <x-main-article-sorotan-hari-ini></x-main-article-sorotan-hari-ini> --}}
         @endif
     </main>
 

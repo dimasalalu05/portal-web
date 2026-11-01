@@ -1,7 +1,7 @@
 <article class="space-y-4 mt-3">
     <div class="flex justify-between">
         <span class="text-[#C52E2B] text-xs font-bold ">SOROTAN HARI INI</span>
-        <span class="text-[#6B706D] text-xs">Jumat 12 Agustus 2006</span>
+        <x-date />
     </div>
 
     {{-- IMAGE --}}
@@ -11,14 +11,14 @@
 
     {{-- TITLE --}}
     <div>
-        <p class="text-[#202321] text-5xl">Menata ulang perjalanan kota, mendekatkan warga ke transportasi publik</p>
+        {{-- <p class="text-[#202321] text-5xl">Menata ulang perjalanan kota, mendekatkan warga ke transportasi publik</p> --}}
+        <x-news-headline width="text-5xl" />
     </div>
 
     {{-- SUB TITLE --}}
     <div>
-        <p class="text-[#6B706D] text-sm">Integrasi antarmoda bukan sekedar menyambungkan rute. Ada soal akses waktu dan
-            pengalaman warga yang perlu
-            didengar</p>
+        <p class="text-[#6B706D] text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores rem ea eius
+            deleniti magnam porro dicta neque veritatis illo accusantium?</p>
     </div>
 
     {{-- KETERANGAN --}}
@@ -27,10 +27,6 @@
         <span class="text-[#6B706D] text-2xl">.</span>
         <span class="text-[#6B706D] text-xs">Nasional</span>
         <span class="text-[#6B706D] text-2xl">.</span>
-        <span class="text-[#6B706D] text-xs">8 menit lalu</span>
-        <span class="text-[#6B706D] text-2xl">.</span>
-
-        <span> <a href="" class="text-[#6B706D] text-xs"> baca selengkapnya &raquo;</a></span>
     </div>
 
 </article>

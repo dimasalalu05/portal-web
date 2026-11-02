@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Article;
 use App\Models\User;
+use Database\Factories\ArticleFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,11 +17,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
 
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        //  Panggil UserSeeder untuk membuat data bar
+        $this->call([
+            UserSeeder::class
+        ]);
+
+        // Buat artikel tanpa category
+        Article::factory(20)->recycle(User::all())->create();
     }
 }

@@ -18,5 +18,7 @@ class UserSeeder extends Seeder
             'username' => 'dimas',
             'email' => 'dimas@gmail.com'
         ]);
+
+        User::factory(10)->create();
     }
 }

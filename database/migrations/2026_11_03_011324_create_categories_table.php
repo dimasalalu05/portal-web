@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->string('name_category', 100);
+            $table->string('slug', 100);
+            $table->foreignId('channel_id')->nullable();
             $table->timestamps();
         });
     }

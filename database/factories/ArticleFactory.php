@@ -27,7 +27,10 @@ class ArticleFactory extends Factory
             'thumbnail' => fake()->image(),
             'image_source_url' => fake()->imageUrl(),
             'image_license' => fake()->isbn10(),
+
             'author_id' => User::factory(),
+            'category_id' => null,
+            'channel_id' => null,
         ];
     }
 }

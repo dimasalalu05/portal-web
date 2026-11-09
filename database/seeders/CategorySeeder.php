@@ -14,38 +14,24 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
+        // Mengambil file categori json
+        $json = file_get_contents(database_path('data/categories.json'));
 
-        // 1. Cari Induknya (Model Channel)
-        $channel = Channel::where('slug', 'nasional')->first();
+        $categoriesData = json_decode($json, true);
 
-        if ($channel) {
-            $channel->categories()->createMany([
-                [
-                    'name_category' => 'Jadi Perhatian',
-                    'slug' => 'jadi-perhatian'
-                ],
-                [
-                    'name_category' => 'Transportasi publik',
-                    'slug' =>   'transportaso-publik'
-                ],
-                [
-                    'name_category' => 'Ekonomi Hijau',
-                    'slug' => 'ekonomi-hijau'
-                ],
-                [
-                    'name_category' => 'Ruang Digital',
-                    'slug' => 'ruang-digital'
-                ],
-                [
-                    'name_category' => 'Kota Untuk Semua',
-                    'slug' => 'kota-untuk-semua'
-                ]
-            ]);
+        // perulangan
+        foreach ($categoriesData as $item) {
+
+            // cari data induknys di database berdasarkan slug yang tertulis
+            $channel = Channel::where('slug', $item['channel_slug'])->first();
+
+            // jika channel ditemukkan, buat kategorinya menggunakan relasi
+            if ($channel) {
+                $channel->categories()->create([
+                    'name_category' => $item['name_category'],
+                    'slug' => $item['slug']
+                ]);
+            }
         }
-        // $categories = 
-
-        // foreach ($categories as $category) {
-        //     Category::create($category);
-        // }
     }
 }

@@ -13,9 +13,19 @@ class Article extends Model
 
     protected $guarded = ['id'];
 
-    // one to one
+    /**
+     * Relasi: Artikel ini ditulis oleh seorang User (Author)
+     */
     public function author(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'author_id');
+    }
+
+    /**
+     * Relasi: Artikel ini termasuk ke dalam suatu Kategori
+     */
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class, 'category_id');
     }
 }

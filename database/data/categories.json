@@ -1,0 +1,27 @@
+[
+    {
+    "channel_slug": "nasional",
+    "name_category": "Jadi Perhatian",
+    "slug": "jadi-perhatian"
+    },
+    {
+    "channel_slug": "nasional",
+    "name_category": "Transportasi Publik",
+    "slug": "transportasi-publik"
+    },
+    {
+    "channel_slug": "nasional",
+    "name_category": "Eknonomi Hijau",
+    "slug": "ekonomi-hijau"
+    },
+    {
+    "channel_slug": "nasional",
+    "name_category": "Ruang Digital",
+    "slug": "ruang-digital"
+    },
+    {
+    "channel_slug": "nasional",
+    "name_category": "Kota Untuk Semua",
+    "slug": "kota-untuk-semua"
+    }
+]

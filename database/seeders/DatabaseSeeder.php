@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Article;
 use App\Models\User;
 use App\Models\Channel;
 use App\Models\Category;
@@ -21,12 +22,10 @@ class DatabaseSeeder extends Seeder
 
         //  Panggil UserSeeder untuk membuat data baru
         $this->call([
+            UserSeeder::class,
             ChannelSeeder::class,
             CategorySeeder::class,
-            UserSeeder::class,
+            ArticleSeeder::class,
         ]);
-
-        // Buat artikel tanpa category
-        Article::factory(20)->recycle(User::all())->create();
     }
 }

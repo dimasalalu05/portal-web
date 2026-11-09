@@ -10,6 +10,9 @@ class Channel extends Model
 {
     protected $fillable = ['name_channel', 'slug', 'description'];
 
+    /**
+     * Relasi: Satu Channel mempunyai banyak kategori
+     */
     public function categories(): HasMany
     {
         return $this->hasMany(Category::class, 'channel_id');

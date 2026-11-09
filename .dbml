@@ -34,7 +34,7 @@ Table articles {
 
  Table channels {
  id int [pk, increment]
- name varchar(100) [not null]
+ name_channel varchar(100) [not null]
  slug varchar(100) [unique, not null]
  description text [null]
  }

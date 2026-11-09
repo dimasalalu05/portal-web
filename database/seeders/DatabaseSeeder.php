@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Article;
 use App\Models\User;
+use App\Models\Channel;
 use Database\Factories\ArticleFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -18,9 +19,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        //  Panggil UserSeeder untuk membuat data bar
+        //  Panggil UserSeeder untuk membuat data baru
         $this->call([
-            UserSeeder::class
+            UserSeeder::class,
+            ChannelSeeder::class,
         ]);
 
         // Buat artikel tanpa category

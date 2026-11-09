@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Factories\ArticleFactory;
 
-#[Guarded('id')]
 
 class Article extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
 
     // one to one
     public function author(): BelongsTo

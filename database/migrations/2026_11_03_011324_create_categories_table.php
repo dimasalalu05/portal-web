@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name_category', 100);
             $table->string('slug', 100);
-            $table->foreignId('channel_id')->nullable();
+            $table->foreignId('channel_id')->constrained();
             $table->timestamps();
         });
     }

@@ -1,0 +1,199 @@
+# � Laravel Tinker & Git Operations - Cheat Sheet
+
+Dokumen panduan cepat untuk interaksi database via Tinker dan pengelolaan repositori via Git profesional.
+
+---
+
+## � 1. Laravel Tinker (Eksplorasi Database)
+
+Untuk masuk ke mode Tinker, jalankan perintah ini di terminal:
+```bash
+php artisan tinker
+```
+*Catatan: Ketik `exit` atau tekan `Ctrl + C` untuk keluar dari Tinker.*
+
+### A. Cek Relasi: User & Article
+#### Masing-masing User punya artikel apa saja?
+```php
+$user = App\Models\User::find(1); // Ganti 1 dengan ID User yang dicari
+$user->articles;                 // Menampilkan koleksi artikel milik user tersebut
+$user->articles()->count();      // Hanya menghitung jumlah artikelnya saja
+```
+
+#### Siapa penulis dari suatu artikel?
+```php
+$article = App\Models\Article::find(5); // Ganti 5 dengan ID Artikel
+$article->author;                      // Menampilkan data user (penulis) artikel ini
+$article->author->name;                // Langsung ambil nama penulisnya saja
+```
+
+### B. Cek Relasi: Category, Channel & Article
+#### Masing-masing Kategori menampung artikel apa saja?
+```php
+$category = App\Models\Category::find(2); // Ganti 2 dengan ID Kategori
+$category->articles;                     // Menampilkan semua artikel di kategori ini
+```
+
+#### Suatu artikel berada di kategori dan channel apa?
+```php
+$article = App\Models\Article::find(3);
+$article->category;                      // Menampilkan kategori artikel ini
+$article->category->name_category;       // Mengambil nama kategorinya
+$article->category->channel;             // Mengambil channel induk lewat kategori (Relasi Berantai)
+$article->category->channel->name_channel; // Mengambil nama channel induknya
+```
+
+### C. Mengambil Seluruh Artikel di satu Channel (HasManyThrough)
+Jika fungsi relasi `articles()` sudah dibuat di Model `Channel.php`:
+```php
+$channel = App\Models\Channel::where('slug', 'nasional')->first();
+$channel->articles;                      // Mengambil seluruh artikel dari semua kategori di bawah channel ini
+```
+
+### D. Perintah Pengambilan Data Umum (Eloquent Quick Reference)
+```php
+App\Models\Article::all();               // Ambil SEMUA data
+App\Models\Article::count();             // Hitung TOTAL baris data di tabel
+App\Models\Article::first();             // Ambil data pertama (ID paling kecil)
+App\Models\Article::latest()->first();   // Ambil data terakhir (Terbaru dibuat)
+App\Models\Article::truncate();          // Kosongkan tabel total (Hapus semua isi data)
+```
+
+### E. Pencarian dengan Kondisi (Where)
+```php
+App\Models\Channel::where('slug', 'teknologi')->first(); // Cari yang slug-nya pas
+App\Models\Article::where('title', 'like', '%bisnis%')->get(); // Cari yang judulnya mengandung kata 'bisnis'
+```
+
+---
+
+## � 2. Perintah Database & Seeding Tercepat
+
+Programmer senior menggunakan perintah gabungan ini untuk meriset database dan mengisi ulang seluruh seeder (*fresh install*):
+```bash
+php artisan migrate:fresh --seed
+```
+*   `migrate:fresh`: Menghapus semua tabel, lalu menjalankan ulang seluruh file migration sesuai urutan tanggal nama file.
+*   `--seed`: Otomatis langsung mengeksekusi fungsi `run()` di dalam file `DatabaseSeeder.php` setelah migrasi tabel selesai.
+
+Untuk menjalankan satu kelas seeder tertentu saja secara terpisah:
+```bash
+php artisan db:seed --class=ChannelSeeder
+```
+
+---
+
+## �️ 3. Konfigurasi Model (Mass Assignment & Keamanan)
+
+Gunakan salah satu dari dua pendekatan properti ini di dalam *Class* Model Anda (Jangan digabung, pilih salah satu):
+
+### Opsi A: Metode Ketat (\$fillable)
+Wajib mendaftarkan field secara manual jika ingin menggunakan `Model::create([...])` atau data dari Form.
+```php
+protected $fillable = ['name_category', 'slug', 'channel_id'];
+```
+
+### Opsi B: Metode Cepat Pemula/Senior (\$guarded)
+Mengizinkan semua kolom untuk disimpan secara massal kecuali kolom yang didaftarkan di dalam array (sangat cocok untuk pengerjaan cepat).
+```php
+protected $guarded = ['id'];
+```
+
+---
+
+## �️ 4. Standard Pesan Commit Git Profesional (Conventional Commits)
+
+Format dasar: `<type>(<scope>): <description>` (Tulis kalimat dalam bentuk perintah/kosakata aktif pendek).
+
+### Kosakata Utama (Type)
+*   `feat`: Menambahkan fitur baru, kolom baru di database, atau model baru.
+*   `fix`: Memperbaiki kutu kode (*bug*), mengatasi *error crash* SQL, atau salah nama properti.
+*   `chore`: Tugas rutin yang tidak mengubah fungsi aplikasi (mengatur seeder data tiruan, setup dependencies, ubah gitignore).
+*   `refactor`: Mengubah susunan struktur kode lama agar lebih rapi tanpa mengubah fungsinya (seperti mengubah visibilitas fungsi dari `protected` menjadi `public`).
+
+### Contoh Kasus Riil Anda
+```text
+feat(migration): create schema for channels, categories, and articles
+feat(models): define core relationships and set mass assignment rules
+fix(factory): resolve unknown column category_id by providing array mapping
+chore(seed): migrate hardcoded seeder arrays into clean external JSON files
+```
+
+---
+
+## � 5. Git Blame (Pelacakan Riwayat Kode)
+
+Digunakan untuk melihat siapa, kapan, dan di commit mana suatu baris kode diubah (Untuk memahami alasan/konteks kode lama).
+
+### Eksekusi via Terminal
+```bash
+git blame app/Models/Article.php
+```
+
+### Rekomendasi Industri
+Daripada menggunakan terminal, instal ekstensi **GitLens** di VS Code atau klik tombol **"Blame"** di pojok kanan atas halaman review file pada repositori GitHub Anda untuk visualisasi baris demi baris yang jauh lebih interaktif.
+
+---
+
+## � 6. Penjelasan Sintaks Core PHP & Laravel Functions
+
+Bagian ini menjelaskan cara kerja fungsi-fungsi bawaan PHP dan Laravel yang Anda gunakan untuk mengelola data dan file eksternal.
+
+### A. Mengubah JSON Menjadi Data PHP (`json_decode`)
+Fungsi asli bawaan PHP untuk menerjemahkan teks mentah JSON menjadi struktur data yang dipahami oleh PHP (Array atau Object).
+
+```php
+\(categoriesData = json_decode(\)json, true);
+```
+*   **`$json`**: Teks mentah (String) hasil pembacaan file `.json`.
+*   **`true`**: Argumen krusial. Jika diatur `true`, teks JSON akan dipaksa menjadi **Array Asosiatif (Kurung Siku `[]`)**. Ini wajib agar data bisa langsung dimasukkan ke fungsi *Mass Assignment* milik Laravel (`Model::create($item)`).
+*   *Jika dikosongkan/false*: Hasilnya akan berupa **Object (`stdClass`)**, sehingga Anda harus memanggilnya dengan tanda panah (`$item->slug`) bukan kurung siku (`$item['slug']`).
+
+### B. Membaca File Fisik (`file_get_contents`)
+Fungsi bawaan PHP untuk membaca seluruh isi dari sebuah file eksternal (seperti file teks, JSON, atau CSV) dan mengubahnya menjadi satu string teks panjang.
+
+```php
+\$json = file_get_contents(database_path('data/channels.json'));
+```
+*   Fungsi ini menyalin semua tulisan yang ada di dalam file `channels.json` ke dalam variabel `$json` agar siap diterjemahkan oleh `json_decode`.
+
+### C. Mencari Path Folder Database Laravel (`database_path`)
+Fungsi bantuan (*Helper*) bawaan Laravel untuk mendapatkan alamat lengkap folder `database/` di dalam komputer Anda secara absolut (pasti).
+
+```php
+database_path('data/channels.json');
+// Hasilnya di komputer Anda akan berupa: /var/www/project-anda/database/data/channels.json
+```
+*   **Mengapa wajib pakai ini?** Agar kode program Anda tidak *error* saat proyek dipindahkan ke komputer lain atau saat di-upload ke server hosting internet (karena struktur nama folder utama di setiap komputer pasti berbeda).
+
+### D. Mengambil Data Acak Koleksi (`random()`)
+Fungsi bawaan Laravel (*Eloquent Collection Method*) untuk mengambil satu atau beberapa data secara acak dari sekumpulan data yang sudah ditarik dari database.
+
+```php
+'author_id' => \$users->random()->id
+```
+*   **`$users`**: Berisi seluruh data user hasil dari `User::all()`.
+*   **`->random()`**: Git/Laravel akan memilih 1 user secara acak dari daftar tersebut.
+*   **`->id`**: Mengambil angka ID dari user acak yang terpilih untuk dipasangkan ke kolom `author_id` artikel.
+
+### E. Melakukan Perulangan Array (`foreach`)
+Struktur kendali dasar PHP untuk membongkar kotak data berbentuk array besar dan memproses isinya satu per satu dari atas ke bawah sampai habis.
+
+```php
+foreach (channels as channel) {
+    Channel::create(\$channel);
+}
+```
+*   **`$channels`**: Kotak besar yang berisi puluhan data channel (misal hasil dari JSON).
+*   **`$channel`**: Variabel sementara yang memegang **1 baris data** yang sedang aktif diproses pada putaran tersebut.
+*   Proses ini otomatis berhenti sendiri jika semua baris data di dalam kotak `$channels` sudah selesai dieksekusi.
+
+### F. Membuat Teks Slug Otomatin (`Str::slug`)
+Fungsi bantuan Laravel untuk mengubah kalimat normal menjadi format URL yang aman, bersih, huruf kecil semua, dan dipisahkan dengan tanda hubung (`-`).
+
+```php
+use Illuminate\Support\Str;
+
+\$slug = Str::slug("Jadi Perhatian!"); // Hasilnya: "jadi-perhatian"
+```
+*   Sangat penting digunakan untuk kolom `slug` berita agar alamat web aplikasi Anda terlihat rapi (contoh: `://domain.com` alih-alih menggunakan spasi atau karakter aneh).

@@ -26,12 +26,12 @@ class Channel extends Model
     public function articles(): HasManyThrough
     {
         return $this->hasManyThrough(
-            Article::class,
-            Category::class,
-            'channel_id',
-            'category_id',
-            'id',
-            'id',
+            Article::class, // Model tujuan akhir 
+            Category::class, // Model perantara
+            'channel_id', // Fk di tabel category
+            'category_id', // FK di tabel article
+            'id', // Local key di table channel
+            'id', // Local key di table category
         );
     }
 }

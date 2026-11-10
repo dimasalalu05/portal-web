@@ -30,7 +30,7 @@ class ArticleFactory extends Factory
 
             'author_id' => User::factory(),
             'category_id' => null,
-            'channel_id' => null,
+            // 'channel_id' => null,
         ];
     }
 }

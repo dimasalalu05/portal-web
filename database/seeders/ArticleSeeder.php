@@ -23,7 +23,6 @@ class ArticleSeeder extends Seeder
             // 3 artikel untuk SETIAP kategori asli dari seeder Anda
             Article::factory(3)->create([
                 'category_id' => $category->id,
-                'channel_id'  => $category->channel_id, // Otomatis ambil ID channel pasangannya
                 'author_id'   => $users->random()->id,
             ]);
         }

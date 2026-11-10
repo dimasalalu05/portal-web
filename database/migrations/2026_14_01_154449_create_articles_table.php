@@ -24,7 +24,6 @@ return new class extends Migration
                 indexName: 'articles_author_id'
             );
             $table->foreignId('category_id')->constrained();
-            $table->foreignId('channel_id')->constrained();
             $table->timestamps();
         });
     }

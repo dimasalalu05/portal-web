@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_article_source');
             $table->text('url');
+            $table->foreignId('article_id')->constrained();
             $table->timestamps();
         });
     }

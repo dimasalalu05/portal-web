@@ -33,7 +33,7 @@ class Article extends Model
      * Relasi: Satu artikel mempunyai banyak sumber
      */
 
-    public function article_source(): HasMany
+    public function article_sources(): HasMany
     {
         return $this->hasMany(Article_source::class, 'article_id');
     }

@@ -3,13 +3,13 @@
 namespace Database\Factories;
 
 use App\Models\Article;
-use App\Models\Model;
+use App\Models\ArticleSource;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Model>
+ * @extends Factory<ArticleSource>
  */
-class Article_SourceFactory extends Factory
+class ArticleSourceFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -21,7 +21,8 @@ class Article_SourceFactory extends Factory
         return [
             'nama_article_source' => fake()->name(),
             'url' => fake()->url(),
-            'article_id' => Article::factory(),
+            // 'article_id' => Article::factory(),
+            'article_id' => Article::inRandomOrder()->value('id') ?? Article::factory(),
         ];
     }
 }

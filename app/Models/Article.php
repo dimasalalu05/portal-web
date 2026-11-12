@@ -35,6 +35,6 @@ class Article extends Model
 
     public function article_sources(): HasMany
     {
-        return $this->hasMany(Article_source::class, 'article_id');
+        return $this->hasMany(ArticleSource::class, 'article_id');
     }
 }

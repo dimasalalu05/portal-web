@@ -2,13 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Model;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends Factory<Model>
+ * @extends Factory<ArticleFactory>
  */
 class ArticleFactory extends Factory
 {
@@ -29,6 +28,7 @@ class ArticleFactory extends Factory
             'image_license' => fake()->isbn10(),
 
             'author_id' => User::factory(),
+            // 'author_id' =>  User::inRandomOrder()->value('id') ?? User::factory(),
             'category_id' => null,
             // 'channel_id' => null,
         ];
